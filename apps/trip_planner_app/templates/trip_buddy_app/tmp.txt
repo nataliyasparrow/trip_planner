@@ -1,0 +1,23 @@
+<table class="table-striped table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Network</th>
+                    <th>Release Date</th>
+                    <th>Actions</th>
+                </tr>
+                {% for s in shows %}
+                    <tr>
+                        <td>{{ s.id }}</td>
+                        <td>{{ s.title }}</td>
+                        <td>{{ s.network.name }}</td>
+                        <td>{{ s.release_date }}</td>
+                        <td><a href="shows/{{ s.id }}">Show</a> |
+                            <a href="shows/{{ s.id }}/edit">Edit</a> |
+                            <a href="shows/{{ s.id }}/destroy">Delete</a>
+                        </td>
+                        </tr>
+                    <tr>
+                {% endfor %}   
+            </table>
+        <a href="shows/new">Add a new show</a>  

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login & Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_app/css/style.css' %}">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="block">
+        {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+        <div class="half col-2">
+            <h5>Registration</h5>
+            <form class="form-group" action="/register" method="POST">
+                {% csrf_token %}
+                <label for="fname">First Name</label>
+                <input class="form-control" type='text' name='fname'><br>
+                <label for="lname">Last Name</label>
+                <input class="form-control" type='text' name='lname'><br>
+                <label for="email">Email</label>
+                <input class="form-control" type='text' name='email'><br>
+                <label for="pw">Password</label>
+                <input class="form-control" type='password' name='pw'><br>
+                <label for="pw_conf">Confirm Password</label>
+                <input class="form-control" type='password' name='pw_conf'><br>
+                <button type="submit" class="btn btn-primary">Register</button><br>
+            </form>
+        </div>
+        <div class="half col-2">
+            <h5>Login</h5>
+            <form class="form-group" action="/login" method="POST">
+                {% csrf_token %}
+                <label for="l_email">Email</label>
+                <input class="form-control" type='email' name='l_email'><br>
+                <label for="l_pw">Password</label>
+                <input class="form-control" type='password' name='l_pw'><br>
+                <button type="submit" class="btn btn-primary">Log In</button><br>
+            </form>
+        </div>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,54 @@
+* {
+    margin: 0px auto;
+    vertical-align: top;
+}
+
+
+div{
+    text-align: left;
+    display: inline-block;
+}
+
+.center {
+    text-align: center;
+}
+
+
+.container{
+    padding: 20px;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+
+table, td, th {
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+
+table {
+    text-align: left;
+    
+}
+
+.narrow {
+    width: 400px;
+    padding: 20px;
+}
+
+.block{
+    display: block;
+    text-align: left;
+}
+
+input [type='text'] {
+    width: 200px;
+}
+
+button {
+    width: 70px;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 200px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trip Buddy</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'trip_planner_app/css/style.css' %}">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+            <h2>Hello, {{ request.session.name }}! Let's edit your trip!</h2><br>            
+            {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form class="form-group" action="/trips/update/{{ trip.id }}" method="POST">
+                {% csrf_token %}
+                <label for="dest">Destination</label>
+                <input class="form-control" type='text' name='dest' value='{{ trip.dest }}'><br>
+                <label for="start_date">Start Date</label>
+                <input class="form-control" type='date' name='start_date' value='{{trip.start_date|date:"Y-m-d" }}'><br>
+                <label for="end_date">End Date</label>
+                <input class="form-control" type='date' name='end_date' value='{{ trip.end_date|date:"Y-m-d" }}'><br>
+                <label for="plan">Plan</label>
+                <textarea class="form-control" name='plan' value='{{ trip.plan }}' placeholder="{{ trip.plan }}"></textarea><br>
+                <button type="submit" class="btn btn-primary">Submit</button><br>
+                <a href="/trips/dashboard">Cancel</a>
+            </form><br>
+            <hr>
+    <a href="/trips/logout">Log Out</a>
+    </div>
+</body>
+</html>
